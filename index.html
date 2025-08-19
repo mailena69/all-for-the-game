@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All For The Game</title>
+    <style>
+        
+        body {
+            font-family: 'Candara', serif;/* Fonte moderna e legível */
+            margin: 0; /* Remove margens padrão */
+            padding: 0; /* Remove espaçamento interno */
+            background: #d2650c;/* Cor de fundo laranja vibrante */
+            color: #e3e3e3;/* Texto claro para contraste */
+            line-height: 1.6;/* Melhor leitura ao espaçar linhas */
+        }
+        
+        nav {  /* Menu fixo  */
+            background: #2e2e2e;/* Fundo escuro para contraste */
+            color: white;/* Texto branco para visibilidade */
+            padding: 0.8rem 1rem;/* Espaçamento interno */
+            position: sticky;/* Mantém no topo ao rolar */
+            top: 0; /* Fixa no topo */
+            z-index: 10;/* Prioriza sobre outros elementos */
+            display: flex;/* Layout em linha */
+            gap: 2rem;/* Espaçamento entre itens */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);/* Sombra sutil */
+            white-space: nowrap;  /* Evita quebra de linha */
+            overflow-x: auto; /* Permite rolagem horizontal em telas pequenas */
+            width: 100%;/* Ocupa largura total */
+        }
+ 
+        nav a { /*links do menu */
+            color: white;/* Cor branca padrão */
+            text-decoration: none;/* Remove sublinhado */
+            font-weight: bold;/* Destaca texto */
+            font-size: 1rem;/* Tamanho da fonte */
+            padding: 0.5rem 1rem;/* Espaçamento interno */
+            border-radius: 5px;/* Bordas arredondadas */
+            transition: background 0.3s, color 0.3s; /* Efeito suave ao interagir */
+        }
+
+        nav a:hover {   /* Estilo ao passar o mouse */
+            color: #d2650c;/* Destaque em laranja */
+        }
+
+        /* Cabeçalho */
+        header { /* Destaque para o topo do site */
+            background: #d2650c; /* Fundo laranja para atratividade */
+            color: white; /* Texto claro */
+            text-align: center; /* Centraliza conteúdo */
+            padding: 2rem 1rem; /* Espaçamento generoso */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Sombra para destaque */
+        }
+       
+        header h1 { /* Título principal*/
+            margin: 0; /* Remove margens padrão */
+            font-size: 3rem; /* Grande para destacar */
+            font-weight: bold; /* Enfatiza importância */
+            letter-spacing: 2px; /* Espaçamento entre letras */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+        }
+
+        header img {/* Estilo da imagem */
+            border-radius: 10px; /* Bordas arredondadas */
+            width: 100%; /* Adaptação responsiva */
+            max-height: 400px; /* Limite para imagens */
+            object-fit: cover; /* Ajusta imagem ao espaço */
+        }
+
+        /* Conteúdo Principal */
+        main {/* Área central do site */
+            padding: 2rem; /* Espaçamento interno */
+            max-width: 1200px; /* Limite de largura */
+            margin: 0 auto; /* Centraliza conteúdo */
+        }
+
+        section {/* Estilização de seções */
+            background: #2e2e2e; /* Fundo cinza escuro */
+            margin-bottom: 2rem; /* Espaço inferior entre seções */
+            padding: 2rem; /* Espaçamento interno */
+            border-radius: 15px; /* Bordas arredondadas */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4); /* Sombra ao redor */
+            position: relative; /* Necessário para elementos posicionados dentro */
+            overflow: hidden; /* Oculta conteúdo que ultrapassa os limites */
+        }
+
+        h2 { /* Estilo dos títulos h2 */
+            position: relative; /* Permite posicionamento específico */
+            color: #d2650c; /* Cor laranja */
+            margin-bottom: 1rem; /* Espaço inferior */
+            font-size: 1.8rem; /* Tamanho da fonte */
+            font-weight: bold; /* Negrito */
+        }
+
+        h2::after { /* Linha decorativa abaixo de h2 */
+            content: ''; /* Adiciona conteúdo vazio como elemento decorativo */
+            position: absolute; /* Posiciona abaixo do título */
+            bottom: -10px; /* Localização abaixo */
+            left: 0; /* Alinhamento à esquerda */
+            width: 50px; /* Largura da linha */
+            height: 4px; /* Altura da linha */
+            background: #d2650c; /* Cor laranja */
+            border-radius: 2px; /* Bordas arredondadas */
+        }
+
+        h3 { 
+            color: #d2650c; /* Cor do subtitulo */
+        }
+
+
+        ol li strong {/* Destaque para elementos dentro de listas ordenadas */
+            color: #d2650c; /* Cor laranja para trazer um destaque*/
+            padding-left: 5px; /* Espaço à esquerda*/
+        }
+
+        table { /* Estilização das tabelas */
+            width: 95%; /* Largura relativa */
+            margin: 20px auto; /* Centraliza e adiciona espaçamento vertical */
+            border-collapse: collapse; /* Remove bordas duplas */
+            font-size: 1em; /* Tamanho da fonte */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao redor */
+            border-radius: 8px; /* Bordas arredondadas */
+            overflow: hidden; /* Oculta conteúdo excedente */
+        }
+
+        table th { /* Cabeçalhos das tabelas */
+            background-color: #d2650c; /* Fundo laranja */
+            color: #fff; /* Texto branco */
+            text-transform: uppercase; /* Letras maiúsculas */
+            font-size: 0.9em; /* Tamanho da fonte */
+            padding: 15px 10px; /* Espaçamento interno */
+            text-align: left; /* Alinhamento do texto */
+        }
+
+        /* Alternância de cores nas linhas */
+        table tr:nth-child(even) {
+            background-color: #d1cfcf; /* Linhas pares - cinza claro */
+        }
+        table tr:nth-child(odd) {
+            background-color: #bbbbbb; /* Linhas ímpares - cinza escuro */
+        }
+
+        /* Estilo das células */
+        table td {
+            padding: 15px 10px; /* Espaçamento interno */
+            color: #000000; /* Texto preto */
+            border-bottom: 1px solid #ddd; /* Borda inferior */
+        }
+        table td:first-child {
+            font-weight: bold; /* Texto em negrito */
+            color: #d2650c; /* Cor laranja */
+        }
+
+        /* Estilização do rodapé */
+        footer {
+            background: #d2650c; /* Fundo laranja */
+            color: white; /* Texto branco */
+            text-align: center; /* Centraliza o conteúdo */
+            padding: 1rem; /* Espaçamento interno */
+            font-size: 0.9rem; /* Tamanho da fonte */
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3); /* Sombra superior */
+        }
+        footer p {
+            margin: 0; /* Remove espaçamento */
+        }
+
+        /* Cartões */
+        .cor a {
+            color: #ffffff; /* Texto branco */
+            text-decoration: none; /* Remove sublinhado */
+            font-weight: bold; /* Negrito */
+        }
+
+        .cor a:hover {
+            text-decoration: underline; /* Adiciona sublinhado */
+            color: #3d3d3d; /* Cor cinza ao passar o mouse */
+        }
+
+        .container {
+            max-width: 1200px; /* Largura máxima */
+            margin: 2rem auto; /* Centraliza e adiciona espaçamento */
+            padding: 1rem; /* Espaçamento interno */
+            display: grid; /* Grid layout */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
+            gap: 2rem; /* Espaçamento entre os itens */
+        }
+
+        .card {
+            background: #d2650c; /* Fundo laranja */
+            border-radius: 10px; /* Bordas arredondadas */
+            overflow: hidden; /* Oculta conteúdo excedente */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+            transition: transform 0.2s; /* Transição suave */
+        }
+
+        .card:hover {
+            transform: scale(1.05); /* Aumenta o tamanho ao passar o mouse */
+        }
+
+        .card img { /* Imagem dentro do cartão */
+            width: 100%; /* Largura total */
+            height: 150px; /* Altura fixa */
+            object-fit: cover; /* Ajusta sem distorcer */
+        }
+
+        /* Conteúdo dentro do cartão */
+        .card-content {
+            padding: 1rem; /* Espaçamento interno */
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem; /* Tamanho do título */
+            margin: 0 0 0.5rem; /* Espaçamento inferior */
+        }
+
+        .card-content a {
+            text-decoration: none; /* Remove sublinhado */
+            color: #ffffff; /* Texto branco */
+            font-weight: bold; /* Negrito */
+        }
+
+        .card-content a:hover {
+            text-decoration: underline; /* Adiciona sublinhado */
+        }
+
+        .card-content p {
+            font-size: 0.9rem; /* Tamanho da fonte */
+            color: #ffffff; /* Texto branco */
+        }
+
+        .edit { /* Estilo do texto com a classe .edit */
+            text-align: justify; /* Justifica o texto */
+            line-height: 1.6; /* Altura das linhas */
+            font-size: 17px; /* Tamanho da fonte */
+        }
+
+        /* Estilização de listas */
+        #topi5 ul li {
+            margin-bottom: 0.8rem; /* Espaço inferior entre itens */
+            font-size: 1.1rem; /* Tamanho da fonte */
+            line-height: 1.6; /* Altura das linhas */
+            color: #f5f5f5; /* Cor cinza claro */
+        }
+
+        #topi5 ul {
+            list-style-type: disc; /* Marcadores em formato de discos */
+            margin-left: 1.5rem; /* Recuo à esquerda */
+        }
+
+        #topi5 ul li::marker {
+            color: #d2650c; /* Cor laranja dos marcadores */
+        }
+         
+    </style>
+</head>
+<body>
+    
+    <header>
+        <!-- Cabeçalho da página, contendo uma imagem do time -->
+        <img src="https://i.pinimg.com/originals/d1/d8/55/d1d85562c00a1f86666d61b15576586f.png" alt="Imagem de All For The Game">
+        <h1>All For The Game</h1>
+    </header>
+    
+    <nav>
+        <!-- Seção de navegação inclui links internos e externos -->
+        <a href="formulsrie.html">Cadastro</a>
+        <a href="#topi1">The Foxhole Court</a>
+        <a href="#topi2">The Raven King</a>
+        <a href="#topi3">The King's Men</a>
+        <a href="#topi5">Melhores Trechos</a>
+        <a href="#Tabela">Tabela Sobre Os Personagens</a>
+        <a href="#topi4">Playlists</a>
+        <a href="daods.html">Ver dados armazenados</a>
+    </nav>
+    
+    <main>
+        <section id="topi1" class="edit">
+            <!-- Seção apresentando o primeiro livro-->
+            <h2>The Foxhole Court</h2>
+            <br>
+            <div>
+                <!-- Resumo do livro -->
+                Em The Foxhole Court , Neil Josten é apresentado como um jovem misterioso e constantemente em fuga de seu passado perigoso, que envolve uma família criminosa. Ele é apaixonado por Exy, um esporte fictício intenso e violento, e sua habilidade no jogo chama a atenção do técnico Wymack, dos Palmetto State Foxes. Apesar de relutante, Neil aceita a oferta para jogar no time, pois vê isso como uma chance de manter-se escondido por mais tempo.<br>
+                Os Foxes são conhecidos por serem um grupo desajustado de jogadores problemáticos, cada um enfrentando suas próprias dificuldades. Neil logo percebe que terá de lidar com conflitos internos no time, especialmente com Andrew Minyard, o imprevisível e instável goleiro que lidera os "Monstros", uma subunidade peculiar da equipe. Neil também precisa evitar a atenção de Kevin Day, uma estrela do Exy e ex-membro dos Ravens, que parecem ligados ao perigoso passado de Neil.<br>
+            </div>
+            <h3>Melhores Capítulos</h3>
+            <!-- lista ordenada dos melhores capitulos  -->
+            <ol>
+                <li><strong>Capítulo 1:</strong> A Introdução de Neil.</li>
+                <li><strong>Capítulo 3:</strong> A Primeira Interação com os Monstros.</li>
+                <li><strong>Capítulo 7:</strong> Columbia.</li>
+                <li><strong>Capítulo 12:</strong> Programa de Kathy.</li>
+                <li><strong>Capítulo 14:</strong> O Juramento de Andrew.</li>
+            </ol>
+        </section>
+    
+        <!-- Seção apresentando o segundo livro -->
+        <section id="topi2" class="edit">
+            <h2>The Raven King </h2><br>
+            <div> <p>
+                Em The Raven King, Neil Josten se vê cada vez mais pressionado a lidar com as consequências de seu passado e o perigo representado pelos Corvos, um time controlado pela família criminosa Moriyama. Kevin Day, ex-corvo, está determinado a desafiar seu antigo time, o que coloca as raposas no centro de uma rivalidade violenta. Andrew Minyard, o instável goleiro, se torna uma figura protetora tanto para Neil quanto para Kevin, mas seu comportamento imprevisível aumenta a tensão.<br>
+                Neil é forçado a confrontar seus traumas enquanto tenta proteger Kevin, cuja mão ferida o impede de jogar no nível necessário para enfrentar os Corvos. Para agravar a situação, Neil precisa manter sua identidade em segredo, já que a revelação de que ele é filho de um criminoso pode colocar todos ao seu redor em risco. Conforme o torneio de Exy avança, as raposas enfrentam ataques físicos e psicológicos de adversários, enquanto lidam com seus próprios conflitos internos.<br>
+                O ponto culminante do livro acontece em um confronto brutal contra os Corvos, onde segredos são revelados, alianças são testadas e Neil precisa fazer escolhas que colocam sua vida em jogo. A história aprofunda os laços entre os personagens, especialmente entre Neil e Andrew, enquanto estabelece a luta das Raposas não apenas como um time, mas como uma família disfuncional unida pela sobrevivência.
+                
+              </p>
+              
+              <h3>Melhores Capítulos</h3>
+              <ol>
+                <li><strong>Capítulo 6:</strong> Baquete de Outono .</li>
+                <li><strong>Capítulo 9:</strong> Raposas em Columbia.</li>
+                <li><strong>Capítulo 11:</strong> Acontecimento com andrew.</li>
+                <li><strong>Capítulo 13:</strong> Internação de Andrew.</li>
+                <li><strong>Capítulo 15:</strong> Neil vai para o ninho dos Corvos.</li>
+                <li><strong>Capítulo 16:</strong> Neil volta para as Raposas.</li>
+              </ol></div>
+        </section>
+
+        <!-- Seção apresentado o terceiro livro -->
+        <section id="topi3" class="edit">
+            <h2>The King's Men</h2>
+            <br>
+            <p> Em The King's Men, as Raposas enfrentam ameaças mais intensas à medida que Neil Josten decide parar de fugir. Ele revela sua verdadeira identidade como Nathaniel Wesninski, filho do "Carniceiro", e expõe sua conexão com os Moriyama, colocando-se no centro de uma guerra entre o time, a máfia e os Corvos.<br>
+                Andrew Minyard continua a proteger Neil, enquanto seu vínculo cresce para algo mais profundo e significativo, desafiando ambos a lidar com suas vulnerabilidades. Kevin Day, determinado a derrotar Riko Moriyama, enfrenta a pressão de seu antigo time e dos abusos que sofreu. As Raposas, antes um grupo desajustado, começam a funcionar como uma verdadeira equipe, unindo forças para superar seus inimigos.<br>
+                O ponto alto ocorre no campeonato nacional contra os Corvos, em um jogo carregado de rivalidades e riscos reais. Neil confronta Riko tanto dentro quanto fora da quadra, enquanto os Raposas provam que podem vencer mesmo com todas as probabilidades contra eles. O final combina vitórias pessoais e coletivas, mostrando que as Raposas não são apenas sobreviventes, mas também campeões
+                
+            </p>
+              
+              <h3>Melhores Capítulos</h3>
+              <ol>
+                <li><strong>Capítulo 3:</strong> Volta para Columbia.</li>
+                <li><strong>Capítulo 4:</strong> Andrew e Neil.</li>
+                <li><strong>Capítulo 8:</strong> Happy 19th birthday,Jr.</li>
+                <li><strong>Capítulo 9:</strong> O Beijo.</li>
+                <li><strong>Capítulo 12:</strong> O temido 0.</li>
+                <li><strong>Capítulo 13:</strong> De Neil para Nathaniel.</li>
+                <li><strong>Capítulo 14:</strong> Reencontro.</li>
+                <li><strong>Capítulo 16:</strong> Jean Moreau.</li>
+                <li><strong>Capítulo 19:</strong> Corvos vs Raposas.</li>
+                <li><strong>Epílogo:</strong> Final de Riko.</li>
+              </ol></p>
+        </section>
+
+        <!-- Seção com trechos dos livros -->
+        <section id="topi5">
+            <h2>Melhores Trechos</h2>
+            <!-- lista não ordenada  -->
+            <ul>
+                <!-- Eu sei que ficou grande e com muita infomação, mas amo muito esse livro e não podia deixar de lado nenhum desse trechos :) -->
+                <li>“ – Da próxima vez que alguém vier até você, sente-se e deixe-me lidar com isso. Entendeu?<br>
+                    – Se isso significar perder você, então não – respondeu Neil.<br>
+                    – Eu te odeio – disse Andrew – Você deveria ser um efeito colateral das drogas.<br>
+                    – Não sou uma alucinação – replicou Neil, confuso e surpreso.<br>
+                    – Você é um sonho inalcançável”
+                    </li>
+                <li>
+                    “– Eu não achei que eu fosse um problema pessoal. Você me odeia, lembra?<br>
+                    – Cada centímetro de você –disse Andrew.– Isso não significa que eu não te chuparia.<br>
+                    – Você gosta de mim!”
+                    </li>
+                <li> 
+                    “Ele queimou o carro, despejando cada galão de gasolina que tinham de reserva, jogando nos bancos, de modo que a queimaria até o osso. Ele não chorou quando as chamas a engoliram, e não se encolheu quando puxou seus ossos para fora, para esfriar. Ele encheu sua bolsa com os restos mortais dela, e a levou a dois quilômetros da praia, enterrou-a o mais fundo que pôde.”
+
+                    </li>
+                <li>“ – Nós vamos para casa amanhã. Vamos resolver as coisas.<br>
+                    Neil olhou para a chave em sua mão. <br>
+                    – Casa – sussurrou ele, precisando ouvir isso em voz alta. Era um conceito estranho para ele, um sonho impossível. – Bem-vindo ao lar, Neil.”
+                 </li>
+                <li>“– Você sabe, eu entendo –Neil disse. – Ser criado como um superstar deve ser realmente, muito difícil para você. Sempre uma mercadoria, nunca um ser humano, ninguém da sua família acha que você vale alguma coisa fora da quadra... É, parece difícil. Kevin e eu conversamos sobre seu complicado e interminável complexo paterno o tempo todo. Eu sei que não é inteiramente culpa sua de estar mentalmente desequilibrado e infectado com esses delírios de grandeza, e eu sei que você é fisicamente incapaz de manter uma conversa decente com alguém como qualquer outro ser humano normal pode, mas eu não acho que nenhum de nós deva aguentar essas suas besteiras. A pena só te dá alguns privilégios, e você já usou a sua em seis insultos atrás. Então, por favor, cale a boca e deixe-nos em paz.”
+                </li>
+                <li>“ Eu não quero fugir. Eu não quero ser um Corvo. Eu não quero ser Nathaniel. Eu quero ser Neil Josten. Eu quero ser uma Raposa. Eu quero jogar com você este ano, e eu quero que nós façamos isso no campeonato. E na primavera, quando os Moriyamas vierem atrás de mim, eu farei o que eles têm tanto medo. Irei ao FBI e contarei tudo a eles. Deixe que me matem. Será tarde mais até então.”
+
+                </li>
+                <li>
+                    “– Você é uma Raposa. Você sempre será um nada. – Andrew arrancou seu cigarro. – Eu te odeio.<br>
+                    – E nove por cento do tempo você não me odeia.<br>
+                    – Nove por cento do tempo eu não quero enganá-lo. Eu sempre te odiei.<br>
+                    – Cada vez que você repete, eu acredito um pouco menos.<br>
+                    Andrew o beijou como se estivesse em uma briga e suas vidas estivessem em jogo, como se seu mundo parasse e recomeçasse na boca de Neil.”
+                    </li>
+                <li>“ Obrigado –ele finalmente ofereceu. – Nem sei como agradecer por tudo: as chaves, a confiança, a honestidade e os beijos. – Com sorte, Andrew acabaria por entender. – Você foi incrível.”
+
+                </li>
+                <li>“ Eu quero... Eu sei que não devo ficar, mas não posso... Não quero perder isso. Eu não quero perder nenhum de vocês. Não quero continuar sendo Nathaniel. Eu quero ser Neil o maior tempo possível.”</li>
+                <li>“– Sim ou não?<br>
+                    – Com você sempre será SIM – respondeu Neil.”
+                    </li>
+                <li>“ – Quem disse “por favor” que te fez odiar tanto a palavra?<br>
+                    – Eu disse. Ele disse que iria parar se eu falasse isso.<br>
+                    – E você acreditou nele – adivinhou Neil.<br>
+                    – Eu tinha sete anos – disse Andrew. – Acreditei nele.”
+                    </li>
+                <li>“– Deixe Riko ser o Rei – disse Kevin – O mais cobiçado, o blindado. Ele vai sacrificar cada peça que tiver para proteger seu trono. O que seja. Eu? – Kevin gesticulou para si novamente– Vou ser a peça mais mortífera do tabuleiro.<br>
+                    – A Rainha –disse Andrew”
+                    </li>
+                <li>“A raquete de Riko chegou perto o suficiente para Neil ouvir o assobio do vento entre as cordas, então uma segunda raquete surgiu do nada, grande, brilhante e laranja. Andrew usou toda sua força restante atingindo Riko em seu antebraço. Seus ossos fizeram um estrondo nauseante quando se quebraram. A raquete de Riko caiu inofensivamente para um lado, e Riko foi o único a gritar.”
+                </li>
+            </ul>
+        </section>
+
+        <!-- Tabela sobre os personagens  -->
+        <section id="Tabela">
+
+            <h2>Tabela sobre All For The Game</h2><br>
+            <table>
+                <thead>
+                    <!-- Cabeçalho -->
+                    <tr>
+                        <th>Personagem</th>
+                        <th>Posição e número</th>
+                        <th>problemas psicológicos </th>
+                        <th>crimes cometidos</th> <!-- Por favor não julgue os meus queridos pelos seus crimes:)-->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Neil Josten</td>
+                        <td>Atacante / 10</td>
+                        <td>Daddy issues; TEPT; TAG; TAR; Boderline; Alexitimia</td>
+                        <td>Falsidade Ideológica; Destruição de Provas; Incêndio Criminoso </td>
+                    </tr>
+                    <tr>
+                        <td>Andrew Minyard</td>
+                        <td>Goleiro / 03</td>
+                        <td>Depressão; TEPT; TPAS; </td>
+                        <td>Homicídio; Tentativa de Homicídio; Agressão; </td>
+                    </tr>
+                    <tr>
+                        <td>Kevin Day</td>
+                        <td>Atacante / 02 </td>
+                        <td>Sindrome de Pânico; Obsessão em exy; Alcóolotra; TEPT</td>
+                        <td>Só ser um grande gostoso</td>
+                    </tr>
+                    <tr>
+                        <td>David Wymack </td>
+                        <td>Treinador</td>
+                        <td>Ansiedade e traumas com abandono</td>
+                        <td>Nenhum que tenha sido revelado</td>
+                    </tr>
+                    <tr>
+                        <td>Danielle Wilds</td>
+                        <td>Negociante Ofensivo / 01</td>
+                        <td>Ansiedade Generalizada</td>
+                        <td>Falsidade Ideológica</td>
+                    </tr>
+                    <tr>
+                        <td>Matthew Boyd</td>
+                        <td>Defensor / 04</td>
+                        <td>Dependência Emocional e Daddy issues</td>
+                        <td>Uso e Pose de Drogas Ilícita</td>
+                    </tr>
+                    <tr>
+                        <td>Aaron Minyard </td>
+                        <td>Defensor / 05</td>
+                        <td>TEPT; TAR; Apatia </td>
+                        <td>Uso e Pose de Drogas Ilícita e Homicídio</td>
+                    </tr>
+                    <tr>
+                        <td>Nicky Hemmick</td>
+                        <td>Defensor / 08</td>
+                        <td>TAG e Dependência Emocional</td>
+                        <td>Apenas indiretamente por conta de Andrew</td>
+                    </tr>
+                    <tr>
+                        <td>Renee Walker</td>
+                        <td>Goleira / 09</td>
+                        <td>Nenhum aparente, ela sabe lidar bem com o emocional</td>
+                        <td>Homicídio e Envolvimento com gangues </td>
+                    </tr>
+                    <tr>
+                        <td>Allison Reynolds</td>
+                        <td>Negociante Defensivo / 07</td>
+                        <td>Bulimia Nervosa e Ansiedade Social</td>
+                        <td>Provável Difamação</td>
+                    </tr>
+                    <tr>
+                        <td>Seth Gordon</td>
+                        <td>Atacante / 06</td>
+                        <td>Depressão; Dependência Química; Problemas com Raiva</td>
+                        <td>Uso e Distribuição de Drogas; Homofóbia; Discurso de Ódio</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- playlist -->
+        <section id="topi4">
+            <h2>Playlists para escutar lendo</h2><br>
+            <p>  <div class="container">
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/474x/78/55/cd/7855cd2f5a15769623c4903a52dbafcf.jpg" alt="Capa da playlist">
+                    <div class="card-content">
+                      <h3><a href="https://open.spotify.com/playlist/3A51RzEAxT3ctyWhKBRE2S?si=676a9ef7942d4631" target="_blank">Neil Josten Kinnies</a></h3>
+                      <p>33 músicas, cerca de 1h 45min</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                  <img src="https://i.pinimg.com/736x/fa/c2/cb/fac2cbdfe2a5eae3464ad4456bf5c61a.jpg" alt="Capa da playlist">
+                  <div class="card-content">
+                    <h3><a href="https://open.spotify.com/playlist/3AKcH8gTROSSEBOoHJJPkm?si=609f04e7b8c84fd1" target="_blank">Nathaniel Wesninski</a></h3>
+                    <p>90 músicas,cerca de 4h 45min</p>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/474x/43/72/68/437268e87c6ec435e2a45f79b25a3181.jpg" alt="Capa da playlist">
+                    <div class="card-content">
+                      <h3><a href="https://open.spotify.com/playlist/5Lzo3Mjre4BMDuv69ZRici?si=115c667c175149fe" target="_blank">Andre Minyard (Kinnies)</a></h3>
+                      <p>103 músicas, cerca de 5h 30min</p>
+                    </div>
+                  </div>
+
+                <div class="card">
+                  <img src="https://i.pinimg.com/736x/3f/0b/57/3f0b5784a356537dafc0f7f477d4358a.jpg" alt="Capa da playlist">
+                  <div class="card-content">
+                    <h3><a href="https://open.spotify.com/playlist/6DuiWccpUSa9CHOEvFqZwi?si=cfad09908a554097" target="_blank">Kevin Day is the hottest man alive</a></h3>
+                    <p>65 músicas, cerca de 4h</p>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://i.pinimg.com/736x/7b/8b/88/7b8b888e8107db00a23541c80a2a24d2.jpg" alt="Capa da playlist">
+                    <div class="card-content">
+                      <h3><a href="https://open.spotify.com/playlist/1wkVwHw4KsvM05tRE0dk8p?si=70acc04c5c2b4719" target="_blank">all for the game vibes</a></h3>
+                      <p>236 músicas,cerca de 13h</p>
+                    </div>
+                  </div>
+  
+                <div class="card">
+                  <img src="https://i.pinimg.com/736x/90/c6/28/90c628c13bf9c2072f303adc24ebb1e2.jpg" alt="Capa da playlist">
+                  <div class="card-content">
+                    <h3><a href="https://open.spotify.com/playlist/4KWaejUBv3VHqb67YOZsf7?si=aa91c9ff581f4357" target="_blank">andrew and neil (aftg)🦊🥍</a></h3>
+                    <p>65 músicas, cerca de 3h 45min</p>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <img src="https://i.pinimg.com/736x/c6/1d/bb/c61dbb2514ff19092f16efc44b8c0b6d.jpg" alt="Capa da playlist">
+                  <div class="card-content">
+                    <h3><a href="https://open.spotify.com/playlist/5uEGWnDzLcYIaODX1TkkVH?si=0cb178c4dce346b2" target="_blank">All for the game🦊🥍</a></h3>
+                    <p>41 músicas, cerca de 2h 15min</p>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <img src="https://i.pinimg.com/736x/d7/b0/d7/d7b0d78f9038f950d26bd6e80aef7e18.jpg" alt="Capa da playlist">
+                  <div class="card-content">
+                    <h3><a href="https://open.spotify.com/playlist/1RZDCTCdHucULVsDoT5qVw?si=05427beb50f144b5" target="_blank">andreil | aftg</a></h3>
+                    <p>146 músicas, cerca de 8h</p>
+                  </div>
+                </div>
+              </div>
+             
+            </p>
+
+             
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2024 All For The Game - By Mylena.</p>
+        <!-- Link para voltar -->
+        <p class="cor"><a href="#">Voltar ao topo</a></p>
+    </footer>
+
+</body>
+</html>

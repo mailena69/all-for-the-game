@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de All For The Game</title>
+    
+    <style>
+        
+        body {
+            font-family: 'Candara', serif; 
+            font-weight: bold; 
+            margin: 0;
+            padding: 10px 15px;
+            display: flex; /* Usa layout flexbox para o corpo. */
+            flex-direction: column; /* Alinha os itens em uma coluna. */
+            align-items: center; /* Centraliza os itens horizontalmente. */
+            justify-content: center; /* Centraliza os itens verticalmente. */
+            min-height: 100vh; /* Garante que o corpo ocupe a altura total da tela. */
+            background-color: #f0f0f0; /* Cor de fundo cinza claro. */
+            color: #333; /* Cor padrão do texto. */
+        }
+
+        form {
+            width: 100%; /* Formulário ocupa toda a largura disponível. */
+            max-width: 600px; /* Limita a largura máxima a 600px. */
+            padding: 20px; 
+            background-color: #2e2e2e; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+            color: white;
+        }
+
+        .input-box {
+            margin-top: 20px; /* Espaçamento entre campos de entrada. */
+        }
+
+        label {
+            display: block; /* Ocupa uma linha inteira. */
+            margin-top: 10px; /* Espaçamento acima do rótulo. */
+            font-size: 1em; 
+        }
+
+        input[type="text"], input[type="email"], select, textarea {
+            width: 100%; /* Campo de entrada ocupa toda a largura do formulário. */
+            padding: 12px; 
+            margin-top: 10px;
+            border: 1px solid #9e9e9e; 
+            border-radius: 8px; 
+            font-size: 1em; 
+            color: #000000; 
+            background-color: #d8d8d870; /* Fundo semitransparente. */
+            box-sizing: border-box; /* Inclui borda e padding no tamanho. */
+            transition: border-color 0.3s; /* Transição suave ao foco. */
+            font-weight: bold; 
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-color: #070504; /* Altera a borda no foco. */
+            outline: none; /* Remove o contorno padrão do navegador. */
+            font-weight: bold; 
+        }
+
+        button {
+            width: 100%;
+            padding: 15px; 
+            background-color: #d2650c; 
+            border: none; /* Remove a borda padrão. */
+            border-radius: 8px; 
+            font-size: 1.1em; /* Tamanho do texto. */
+            color: white; /* Texto branco. */
+            cursor: pointer; /* Aponta cursor ao passar sobre o botão. */
+            margin-top: 20px; /* Espaçamento acima. */
+            transition: background-color 0.3s; /* Transição suave ao passar o mouse. */
+        }
+
+        button:hover {
+            background-color: #8a3e00; /* Cor mais escura ao passar o mouse. */
+        }
+
+        .colore {
+            color: #d2650c; /* Texto laranja. */
+        }
+
+        .back-link {
+            margin-top: 20px; /* Espaçamento acima. */
+            font-size: 1em; /* Tamanho do texto. */
+            text-align: center; /* Alinha o texto ao centro. */
+        }
+
+        .back-link a {
+            color: #9d3001; /* Link em tom laranja. */
+            text-decoration: none; /* Remove o sublinhado padrão. */
+            font-weight: bold; /* Link em negrito. */
+        }
+
+        .back-link a:hover {
+            text-decoration: underline; /* Sublinhado ao passar o mouse. */
+            color: #d2650c; /* Cor laranja mais clara. */
+        }
+
+        .corzinha {
+            color: #d2650c; /* Texto laranja. */
+            font-size: 2rem; /* Tamanho grande do texto. */
+            text-align: center; /* Alinhado ao centro. */
+        }
+
+        iframe {
+            width: 100%; /* Ocupa toda a largura do contêiner. */
+            height: 600px; /* Altura fixa do iframe. */
+            border: none; /* Remove a borda padrão. */
+            margin-top: 20px; /* Espaçamento acima do iframe. */
+            border-radius: 10px; /* Bordas arredondadas. */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave ao redor. */
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Formulário de cadastro para coletar informações do fã -->
+    <form id="form-fan">
+        <h1 class="corzinha">CADASTRO</h1>
+        
+        <!-- Caixa de entrada para o nome -->
+        <div class="input-box">
+            <label class="colore" for="nome">Informe seu Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <!-- Caixa de entrada para o e-mail -->
+        <div class="input-box">
+            <label class="colore" for="email">Informe seu Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Seleção do personagem favorito -->
+        <div class="input-box">
+            <label class="colore" for="personagem">Informe o personagem de All For The Game você mais gosta:</label>
+            <select name="personagem" id="personagem" required>
+                <!-- Opções disponíveis para seleção -->
+                <option value="Neil Josten">Neil Josten</option>
+                <option value="Andrew Minyard">Andrew Minyard</option>
+                <option value="Kevin Day">Kevin Day</option>
+                <option value="Aaron Minyard">Aaron Minyard</option>
+                <option value="Dan Wilds">Dan Wilds</option>
+                <option value="Renee Walker">Renee Walker</option>
+                <option value="Matt Boyd">Matt Boyd</option>
+                <option value="Allison Reynolds">Allison Reynolds</option>
+                <option value="Nicky Hemmick">Nicky Hemmick</option>
+            </select>
+        </div>
+
+        <!-- Seleção do livro favorito -->
+        <div class="input-box">
+            <label class="colore" for="livro">Informe o seu livro favorito de All For The Game:</label>
+            <select id="livro" name="livro" required>
+                <!-- Opções disponíveis para seleção -->
+                <option value="The Foxhole Court">The Foxhole Court</option>
+                <option value="The Raven King">The Raven King</option>
+                <option value="The King's Men">The King's Men</option>
+            </select>
+        </div>
+
+        <!-- Área de texto para descrever a cena favorita -->
+        <div class="input-box">
+            <label class="colore" for="cena">Informe a cena que mais te marcou nos livros:</label>
+            <textarea id="cena" name="cena" required></textarea>
+        </div>
+
+        <!-- Botões para salvar ou limpar o formulário -->
+        <button type="submit">Salvar Dados</button>
+        <button type="reset" class="reset">Limpar</button>
+    </form>
+
+    <!-- Links de navegação -->
+    <div class="back-link">
+        <!-- Link para visualizar os dados armazenados -->
+        <a href="daods.html">Ver Dados Armazenados</a><br>
+        <!-- Link para voltar à página inicial -->
+        <a href="index.html">Voltar para página Inicial</a>
+    </div>
+
+    <script>
+        // Adiciona evento ao formulário para capturar os dados no envio
+        document.getElementById('form-fan').addEventListener('submit', function (e) {
+            e.preventDefault(); // Impede o envio padrão do formulário
+
+            // Coleta os dados dos campos do formulário
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const personagem = document.getElementById('personagem').value;
+            const livro = document.getElementById('livro').value;
+            const cena = document.getElementById('cena').value;
+            
+            // Cria um objeto com os dados coletados
+            const dadosFan = {
+                nome,
+                email,
+                personagem,
+                livro,
+                cena
+            };
+
+            // Armazena os dados no localStorage como string JSON
+            localStorage.setItem('dadosFan', JSON.stringify(dadosFan));
+
+            // Redireciona o usuário para a página inicial
+            window.location.href = 'index.html';
+        });
+    </script>
+
+    <!-- Exibe o conteúdo da página inicial em um iframe -->
+    <iframe src="index.html" frameborder="0"></iframe>
+
+</body>
+</html>

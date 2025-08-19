@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados Armazenados - Fã de All For The Game</title>
+    <style>
+        
+        body {
+            font-family: 'Candara', serif; 
+            padding: 20px;
+            background-color: #ffffff;
+            display: flex; 
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh; /* Garante altura mínima da tela */
+        }
+
+        .container {
+            background-color: #d2650c; 
+            border-radius: 12px; 
+            padding: 40px; 
+            box-shadow: 0 10px 30px rgba(214, 203, 203, 0.1); 
+            width: 100%; /* Ocupa largura total disponível */
+            max-width: 650px; /* Limita a largura máxima */
+            text-align: center; 
+            color: #333; 
+        }
+
+        h1 {
+            font-size: 50px; /* Tamanho do texto grande */
+            background-color: #3c3c3c; /* Fundo cinza escuro */
+            padding: 10px; /* Espaçamento interno */
+            color: #c04214; /* Texto laranja escuro */
+            border-radius: 12px; /* Bordas arredondadas */
+        }
+
+        /* Caixas*/
+        .fan-data-box {
+            margin-top: 20px; /* Espaçamento superior */
+            text-align: left; /* Texto alinhado à esquerda */
+            font-size: 1.1em; /* Texto levemente maior */
+            background-color: #3c3c3c; /* Fundo cinza escuro */
+            padding: 20px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1); /* Sombra clara */
+        }
+
+        .fan-data-box h1 {/* titulo dentro da caixa*/
+            font-size: 60px; /* Tamanho do título maior */
+            text-align: center;
+            background-color: #3c3c3c;
+            padding: 10px;
+            color: #d2650c; /* Texto laranja */
+            border-radius: 8px;
+            margin-top: 0; /* Remove margem superior */
+}
+
+        .fan-data-box p {
+            margin: 10px 0; /* Espaçamento vertical */
+            color: #ffffff; /* Texto branco */
+        }
+
+
+        .fan-data-box strong {
+            color: #d2650c; /* Destaque em laranja */
+        }
+
+        .buttons {
+            margin-top: 30px; /* Espaçamento superior */
+        }
+
+        /* Estilo para os botões */
+        .buttons button {
+            padding: 10px 20px; 
+            margin: 5px; 
+            font-size: 16px; 
+            border: none; 
+            border-radius: 5px; 
+            cursor: pointer; /* Aponta cursor sobre o botão */
+            color: #fff; 
+            background-color: #c95a1a; 
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+        }
+
+        /* Estilo para botões ao passar o mouse */
+        .buttons button:hover {
+            background-color: #d2650c; /* Fundo laranja mais claro no hover */
+        }
+
+        /* Estilo para links de retorno */
+        .back-link {
+            margin-top: 30px; /* Espaçamento superior */
+        }
+
+        /* Estilo para os links dentro do contêiner de retorno */
+        .back-link a {
+            font-weight: bold; 
+            text-decoration: none; /* Remove sublinhado */
+            color: #333; /* Texto cinza escuro */
+        }
+
+        .back-link a:hover {
+            text-decoration: underline; /* Adiciona sublinhado no hover */
+            color: #d2650c; /* Texto laranja no hover */
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <!-- Contêiner principal que engloba o conteúdo -->
+    <div class="container">
+
+        <!-- Caixa para exibição dos dados armazenados -->
+        <div class="fan-data-box">
+            <h1>Dados:</h1>
+
+            <!-- Cada parágrafo exibe um dado específico armazenado -->
+            <p><strong>Nome:</strong> <span id="nome-display"></span></p>
+            <p><strong>E-mail:</strong> <span id="email-display"></span></p>
+            <p><strong>Personagem favorito:</strong> <span id="personagem-display"></span></p>
+            <p><strong>Livro favorito:</strong> <span id="livro-display"></span></p>
+            <p><strong>Cena que mais te marcou:</strong> <span id="cena-display"></span></p>
+        </div>
+    
+        <!-- Seção de botões para ações adicionais -->
+        <div class="buttons">
+            <!-- Botão para limpar os dados armazenados -->
+            <button id="clear-button">Limpar Dados</button>
+        </div>
+        
+        <!-- Links de navegação para outras páginas -->
+        <div class="back-link">
+            <!-- Link para a página de cadastro -->
+            <a href="formulsrie.html">Voltar para o Cadastro</a><br>
+            <!-- Link para a página inicial -->
+            <a href="index.html">Voltar para página Inicial</a>
+        </div>
+        
+    </div>
+
+    <script>
+        // Função executada assim que a página é carregada
+        window.onload = function() {
+            // Recupera os dados armazenados no localStorage
+            const dadosFan = JSON.parse(localStorage.getItem('dadosFan'));
+
+            if (dadosFan) {
+                // Exibe os dados armazenados nos elementos correspondentes
+                document.getElementById('nome-display').textContent = dadosFan.nome;
+                document.getElementById('email-display').textContent = dadosFan.email;
+                document.getElementById('personagem-display').textContent = dadosFan.personagem;
+                document.getElementById('livro-display').textContent = dadosFan.livro;
+                document.getElementById('cena-display').textContent = dadosFan.cena;
+            } else {
+                // Caso não haja dados, exibe mensagem indicando ausência
+                document.querySelector('.fan-data-box').innerHTML = '<p><strong>Nenhum dado armazenado.</strong></p>';
+            }
+
+            // Adiciona evento ao botão para limpar os dados armazenados
+            document.getElementById('clear-button').addEventListener('click', function() {
+                // Remove os dados do localStorage
+                localStorage.removeItem('dadosFan');
+                // Atualiza o conteúdo da caixa de dados para indicar ausência de dados
+                document.querySelector('.fan-data-box').innerHTML = '<p><strong>Nenhum dado armazenado.</strong></p>';
+            });
+        }
+    </script>
+</body>
+
+</html>
